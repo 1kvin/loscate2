@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Loscate.App.Views.EditProfilePage"
+             xmlns:viewmodels="clr-namespace:Loscate.App.ViewModels" 
+             x:DataType="viewmodels:EditProfileViewModel"
+             Title="Редактировать профиль">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Text="Фото профиля:" HorizontalOptions="Center"/>
+            <Image Source="{Binding UserImage}" VerticalOptions="Start">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding UserImageClickCommand}" NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="Ваше имя:"/>
+            <Entry MaxLength="30" Text="{Binding UserName}"/>
+            <Button Text="Сохранить" Command="{Binding SaveChangesCommand}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
