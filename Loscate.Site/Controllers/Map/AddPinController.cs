@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Loscate.Site.DbContext;
+using Loscate.Site.Repository;
 using Loscate.Site.Services;
 using Loscate.Site.Utilities;
 using Microsoft.AspNetCore.Authorization;
@@ -15,11 +16,11 @@ namespace Loscate.Site.Controllers.Map
     [Route("api/map/[controller]")]
     public class AddPinController : Controller
     {
-        private readonly LoscateDbContext loscateDbContext;
+        private readonly ILoscateDbRepository loscateDbContext;
         private readonly UserService userService;
         private const int MAX_PIN_PER_DAY = 3;
 
-        public AddPinController(LoscateDbContext loscateDbContext, UserService userService)
+        public AddPinController(ILoscateDbRepository loscateDbContext, UserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;

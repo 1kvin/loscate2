@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Loscate.Site.DbContext;
+using Loscate.Site.Repository;
 using Loscate.Site.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +14,9 @@ namespace Loscate.Site.Controllers.Map
     [Route("api/map/[controller]")]
     public class SearchPinController : Controller
     {
-        private readonly LoscateDbContext loscateDbContext;
+        private readonly ILoscateDbRepository loscateDbContext;
 
-        public SearchPinController(LoscateDbContext loscateDbContext)
+        public SearchPinController(ILoscateDbRepository loscateDbContext)
         {
             this.loscateDbContext = loscateDbContext;
         }

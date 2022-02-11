@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Loscate.Site.DbContext;
+using Loscate.Site.Repository;
 using Loscate.Site.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,11 +11,11 @@ namespace Loscate.Site.Controllers.Map
 {
     [Authorize]
     [Route("api/map/[controller]")]
-    public class GetPinsController: Controller
+    public class GetPinsController : Controller
     {
-        private readonly LoscateDbContext loscateDbContext;
+        private readonly ILoscateDbRepository loscateDbContext;
 
-        public GetPinsController(LoscateDbContext loscateDbContext)
+        public GetPinsController(ILoscateDbRepository loscateDbContext)
         {
             this.loscateDbContext = loscateDbContext;
         }
@@ -23,7 +23,7 @@ namespace Loscate.Site.Controllers.Map
         [HttpGet]
         public List<Pin> Get()
         {
-            return loscateDbContext.Pins.Include(p=>p.User).ToList().Select(pin => pin.ConvertToDto()).ToList();
+            return loscateDbContext.Pins.Include(p => p.User).ToList().Select(pin => pin.ConvertToDto()).ToList();
         }
     }
 }

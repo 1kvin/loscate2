@@ -21,16 +21,18 @@ namespace Loscate.Site.Utilities
             };
         }
         
-        public static DbContext.Pin ConvertToDto(this DTO.Map.Pin pin, DbContext.FirebaseUser user)
+        public static DbContext.Pin ConvertToDb(this DTO.Map.Pin pin, DbContext.FirebaseUser user)
         {
             return new DbContext.Pin()
             {
+                Id = pin.Id,
                 Latitude = pin.Latitude,
                 Longitude = pin.Longitude,
                 ShortName = pin.ShortName,
                 FullName = pin.FullName,
                 Photo = pin.PhotoBase64,
-                UserId = user.Id
+                UserId = user.Id,
+                User = user
             };
         }
         

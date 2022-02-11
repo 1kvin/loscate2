@@ -1,5 +1,6 @@
 ﻿using System;
 using Loscate.Site.DbContext;
+using Loscate.Site.Repository;
 using Loscate.Site.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,10 @@ namespace Loscate.Site.Controllers.User
     [Route("api/user/[controller]")]
     public class EditUserNameController : Controller
     {
-        private readonly LoscateDbContext loscateDbContext;
+        private readonly ILoscateDbRepository loscateDbContext;
         private readonly UserService userService;
 
-        public EditUserNameController(LoscateDbContext loscateDbContext, UserService userService)
+        public EditUserNameController(ILoscateDbRepository loscateDbContext, UserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;

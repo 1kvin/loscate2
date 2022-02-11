@@ -1,5 +1,6 @@
 ﻿using System;
 using Loscate.Site.DbContext;
+using Loscate.Site.Repository;
 using Loscate.Site.Services;
 using Loscate.Site.Utilities;
 using Microsoft.AspNetCore.Authorization;
@@ -11,10 +12,10 @@ namespace Loscate.Site.Controllers.User
     [Route("api/user/[controller]")]
     public class EditPhotoController : Controller
     {
-        private readonly LoscateDbContext loscateDbContext;
+        private readonly ILoscateDbRepository loscateDbContext;
         private readonly UserService userService;
 
-        public EditPhotoController(LoscateDbContext loscateDbContext, UserService userService)
+        public EditPhotoController(ILoscateDbRepository loscateDbContext, UserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;

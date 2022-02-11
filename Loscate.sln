@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loscate.Site", "Loscate.Sit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loscate.DTO", "Loscate.DTO\Loscate.DTO.csproj", "{BB2FD995-9EBC-4552-8B29-240A04AB2A46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loscate.Site.UnitTests", "Loscate.Site.UnitTests\Loscate.Site.UnitTests.csproj", "{2CB5B1B3-5DAF-44B1-9D30-D43418451A6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{BB2FD995-9EBC-4552-8B29-240A04AB2A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB2FD995-9EBC-4552-8B29-240A04AB2A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB2FD995-9EBC-4552-8B29-240A04AB2A46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CB5B1B3-5DAF-44B1-9D30-D43418451A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CB5B1B3-5DAF-44B1-9D30-D43418451A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CB5B1B3-5DAF-44B1-9D30-D43418451A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CB5B1B3-5DAF-44B1-9D30-D43418451A6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

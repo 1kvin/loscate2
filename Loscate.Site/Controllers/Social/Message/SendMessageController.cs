@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Loscate.Site.DbContext;
+using Loscate.Site.Repository;
 using Loscate.Site.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,10 @@ namespace Loscate.Site.Controllers.Social.Message
     [Route("api/social/message/[controller]")]
     public class SendMessageController : Controller
     {
-        private readonly LoscateDbContext loscateDbContext;
+        private readonly ILoscateDbRepository loscateDbContext;
         private readonly UserService userService;
         
-        public SendMessageController(LoscateDbContext loscateDbContext, UserService userService)
+        public SendMessageController(ILoscateDbRepository loscateDbContext, UserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;

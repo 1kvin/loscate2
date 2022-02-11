@@ -31,8 +31,4 @@
     <ProjectReference Include="..\Loscate.DTO\Loscate.DTO.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>

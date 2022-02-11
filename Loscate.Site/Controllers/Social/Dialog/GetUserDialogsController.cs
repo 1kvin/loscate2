@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Loscate.Site.DbContext;
+using Loscate.Site.Repository;
 using Loscate.Site.Services;
 using Loscate.Site.Utilities;
 using Microsoft.AspNetCore.Authorization;
@@ -14,10 +15,10 @@ namespace Loscate.Site.Controllers.Social.Dialog
     [Route("api/social/dialog/[controller]")]
     public class GetUserDialogsController : Controller
     {
-        private readonly LoscateDbContext loscateDbContext;
+        private readonly ILoscateDbRepository loscateDbContext;
         private readonly UserService userService;
 
-        public GetUserDialogsController(LoscateDbContext loscateDbContext, UserService userService)
+        public GetUserDialogsController(ILoscateDbRepository loscateDbContext, UserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;

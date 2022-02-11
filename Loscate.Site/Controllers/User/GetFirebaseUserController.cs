@@ -19,7 +19,6 @@ namespace Loscate.Site.Controllers.User
         public FirebaseUser Get()
         {
             return userService.GetDbUser(User).ConvertToDto();
-            //return User.ToFirebaseUser();
         }
     }
 }

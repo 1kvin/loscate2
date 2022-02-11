@@ -1,4 +1,5 @@
 using Loscate.Site.DbContext;
+using Loscate.Site.Repository;
 using Loscate.Site.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -45,6 +46,7 @@ namespace Loscate.Site
             
             services.AddDbContext<LoscateDbContext>();
             services.AddTransient<UserService>();
+            services.AddTransient<ILoscateDbRepository, EfLoscateRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
