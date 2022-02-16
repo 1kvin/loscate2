@@ -74,7 +74,7 @@ namespace Loscate.App.ViewModels
             var dialogs = await DialogRequests.GetUserDialogs(firebaseAuthenticator);
             foreach (var dialog in dialogs)
             {
-                var d = Dialogs.SingleOrDefault(d=>d.XamarinCompanion.Name == dialog.Companion.Name);
+                var d = Dialogs.SingleOrDefault(c=>c.XamarinCompanion.Name == dialog.Companion.Name);
                 if (d == null)
                 {
                     if (dialog.LastMessage.Text.Contains("Привет! Меня заинтерисовала твоя метка"))

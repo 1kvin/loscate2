@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>aspnet-Loscate.Site-AFF47897-9FED-4D7F-B8E9-B7C2AB3448FC</UserSecretsId>
+    <AspNetCoreHostingModel>OutOfProcess</AspNetCoreHostingModel> 
   </PropertyGroup>
 
   <ItemGroup>
