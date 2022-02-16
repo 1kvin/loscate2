@@ -15,6 +15,11 @@ namespace Loscate.App.UnitTests
     public class FakeAuthenticator : IFirebaseAuthenticator
     {
         private string token;
+        
+        public bool IsSubscribe { get; set; }
+        
+        public bool IsSignIn { get; set; }
+        
         public string GetAuthToken()
         {
             if (string.IsNullOrWhiteSpace(token))
@@ -26,34 +31,42 @@ namespace Loscate.App.UnitTests
                 var jsonString = JObject.Parse(response.Content.ReadAsStringAsync().Result); 
                 token = jsonString["idToken"]?.ToString();
             }
-           
             
             return token;
         }
 
         public bool IsHaveUser()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void SignIn()
         {
-            throw new NotImplementedException();
+            IsSignIn = true;
         }
 
         public void SignOut()
         {
-            throw new NotImplementedException();
+            IsSignIn = false;
         }
 
         public void SubscribeToTokenUpdate(Action action)
         {
-            throw new NotImplementedException();
+            try
+            {
+                action?.Invoke();
+            }
+            catch
+            {
+                // ignored
+            }
+
+            IsSubscribe = true;
         }
 
         public void UnSubscribeToTokenUpdate(Action action)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
