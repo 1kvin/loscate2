@@ -8,7 +8,7 @@ namespace Loscate.App.UnitTests
     {
         public event EventHandler NotificationReceived;
 
-        public List<(string title, string message, DateTime? notifyTime)> SendNotifications;
+        public List<(string title, string message, DateTime? notifyTime)> SendNotifications = new List<(string title, string message, DateTime? notifyTime)>();
         
         public void Initialize()
         {
