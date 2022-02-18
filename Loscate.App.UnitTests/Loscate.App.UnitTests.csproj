@@ -59,10 +59,21 @@
     <Compile Include="ApiRequests\Social\SendMessageTests.cs" />
     <Compile Include="ApiRequests\User\ChangeUserNameTest.cs" />
     <Compile Include="ApiRequests\User\ChangeUserPhotoTest.cs" />
-    <Compile Include="FakeAuthenticator.cs" />
+    <Compile Include="MockModels\FakeAuthenticator.cs" />
+    <Compile Include="MockModels\FakeMap.cs" />
+    <Compile Include="MockModels\FakeNotificationManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ChatTemplateSelectorTests.cs" />
+    <Compile Include="ViewModel\Chat\ChatTests.cs" />
+    <Compile Include="ViewModel\Chat\DialogsTests.cs" />
+    <Compile Include="ViewModel\Login\LoginTests.cs" />
+    <Compile Include="ViewModel\Map\MapTests.cs" />
+    <Compile Include="ViewModel\Pin\AddPinTests.cs" />
+    <Compile Include="ViewModel\Pin\PinDetailTests.cs" />
+    <Compile Include="ViewModel\Pin\SearchPinTests.cs" />
+    <Compile Include="ViewModel\Profile\EditProfileTests.cs" />
     <Compile Include="ViewModel\Profile\MyPinsTests.cs" />
+    <Compile Include="ViewModel\Profile\MyProfileTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Loscate.App\Loscate.App\Loscate.App.csproj">

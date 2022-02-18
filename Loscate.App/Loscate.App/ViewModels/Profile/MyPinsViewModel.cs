@@ -31,19 +31,19 @@ namespace Loscate.App.ViewModels
             userRepository = TinyIoCContainer.Current.Resolve<UserRepository>();
             firebaseAuthenticator = DependencyService.Get<IFirebaseAuthenticator>();
             Items = new ObservableCollection<CustomPin>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new Command(ExecuteLoadItemsCommand);
 
             ItemTapped = new Command<CustomPin>(OnItemSelected);
         }
 
-        private async Task ExecuteLoadItemsCommand()
+        private void ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
             try
             {
                 Items.Clear();
-                var res = await MapRequests.GetPins(firebaseAuthenticator).ConfigureAwait(true);
+                var res = MapRequests.GetPins(firebaseAuthenticator).Result;
                 var items = res.Select(p=>p.ConvertPin()).ToList();
 
                 foreach (var item in items.Where(item => item.UserUID == userRepository.user.UID))

@@ -36,7 +36,6 @@ namespace Loscate.App.ViewModels
             firebaseAuthenticator = DependencyService.Get<IFirebaseAuthenticator>();
             pinsRepository = TinyIoCContainer.Current.Resolve<PinsRepository>();
             mapService.OnPinClickSubscribe(OnPinClick);
-            OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamarin-quickstart"));
             SearchCommand = new Command(async () => await OpenSearchPage());
             AddPinCommand = new Command(async () => await OpenAddPinPage());
             RefreshCommand = new Command(async () => await LoadPins());
@@ -53,7 +52,7 @@ namespace Loscate.App.ViewModels
             });
         }
 
-        private async Task LoadPins()
+        public async Task LoadPins()
         {
             var res = await MapRequests.GetPins(firebaseAuthenticator).ConfigureAwait(true);
             var customPins = res.Select(p=>p.ConvertPin()).ToList();
@@ -108,8 +107,6 @@ namespace Loscate.App.ViewModels
         {
             await Shell.Current.GoToAsync($"{nameof(SearchPinPage)}");
         }
-
-        public ICommand OpenWebCommand { get; }
 
         private void OnPinClick(CustomPin pin)
         {
