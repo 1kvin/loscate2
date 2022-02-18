@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loscate.App.Android", "Loscate.App\Loscate.App.Android\Loscate.App.Android.csproj", "{8768D7BA-CBB4-4069-8047-066978667D77}"
 EndProject
@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loscate.App", "Loscate.App\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loscate.Site", "Loscate.Site\Loscate.Site.csproj", "{0B6F4F61-3B1F-4C9D-A3B3-8B5FEF551525}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loscate.DTO", "Loscate.DTO\Loscate.DTO.csproj", "{BB2FD995-9EBC-4552-8B29-240A04AB2A46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loscate.DTO", "Loscate.DTO\Loscate.DTO.csproj", "{BB2FD995-9EBC-4552-8B29-240A04AB2A46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loscate.Site.UnitTests", "Loscate.Site.UnitTests\Loscate.Site.UnitTests.csproj", "{2CB5B1B3-5DAF-44B1-9D30-D43418451A6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Loscate.Site.UnitTests", "Loscate.Site.UnitTests\Loscate.Site.UnitTests.csproj", "{2CB5B1B3-5DAF-44B1-9D30-D43418451A6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Loscate.App.UnitTests", "Loscate.App.UnitTests\Loscate.App.UnitTests.csproj", "{53710D06-1AE9-47A4-A3C9-E025C073C47C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{2CB5B1B3-5DAF-44B1-9D30-D43418451A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CB5B1B3-5DAF-44B1-9D30-D43418451A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CB5B1B3-5DAF-44B1-9D30-D43418451A6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53710D06-1AE9-47A4-A3C9-E025C073C47C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53710D06-1AE9-47A4-A3C9-E025C073C47C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53710D06-1AE9-47A4-A3C9-E025C073C47C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53710D06-1AE9-47A4-A3C9-E025C073C47C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

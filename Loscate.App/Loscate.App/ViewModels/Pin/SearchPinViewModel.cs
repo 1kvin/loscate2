@@ -28,29 +28,25 @@ namespace Loscate.App.ViewModels
         {
             firebaseAuthenticator = DependencyService.Get<IFirebaseAuthenticator>();
             Items = new ObservableCollection<CustomPin>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new Command(ExecuteLoadItemsCommand);
 
             ItemTapped = new Command<CustomPin>(OnItemSelected);
         }
 
-        private async Task ExecuteLoadItemsCommand()
+        private void ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
             try
             {
                 Items.Clear();
-                var res = await MapRequests.SearchPin(firebaseAuthenticator, SearchText).ConfigureAwait(true);
+                var res = MapRequests.SearchPin(firebaseAuthenticator, SearchText).Result;
                 var items = res.Select(p => p.ConvertPin()).ToList();
 
                 foreach (var item in items)
                 {
                     Items.Add(item);
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
             }
             finally
             {

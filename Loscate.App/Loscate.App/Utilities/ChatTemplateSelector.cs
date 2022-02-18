@@ -25,9 +25,7 @@ namespace Loscate.App.Utilities
             var messageVm = item as Message;
             if (messageVm == null)
                 return null;
-
-
-            //return (messageVm.User == userRepository.user.Name) ? outgoingDataTemplate : incomingDataTemplate;
+            
             return (messageVm.User == userRepository.user.Name) ? incomingDataTemplate : outgoingDataTemplate;
         }
     }

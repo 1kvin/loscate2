@@ -18,7 +18,7 @@ namespace Loscate.App.ViewModels
         public string UserName { get; set; }
         public Command UserImageClickCommand { get; }
         public Command SaveChangesCommand { get; }
-        private string base64photo;
+        public string base64photo;
         private readonly IFirebaseAuthenticator firebaseAuthenticator;
         private readonly UserRepository userRepository;
 

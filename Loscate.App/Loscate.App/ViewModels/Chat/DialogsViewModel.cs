@@ -21,7 +21,6 @@ namespace Loscate.App.ViewModels
         private XamarinDialog _selectedDialog;
         public ObservableCollection<XamarinDialog> Dialogs { get; }
         public Command LoadDialogsCommand { get; }
-        public Command AddDialogCommand { get; }
         public Command<XamarinDialog> ItemTapped { get; }
         
         public XamarinDialog SelectedDialog
@@ -39,11 +38,10 @@ namespace Loscate.App.ViewModels
             Dialogs = new ObservableCollection<XamarinDialog>();
             firebaseAuthenticator = DependencyService.Get<IFirebaseAuthenticator>();
             notificationManager = DependencyService.Get<INotificationManager>();
-            LoadDialogsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadDialogsCommand = new Command(ExecuteLoadItemsCommand);
 
             ItemTapped = new Command<XamarinDialog>(OnDialogSelected);
-
-            AddDialogCommand = new Command(OnAddDialog);
+            
             
             notificationManager.NotificationReceived += (sender, eventArgs) =>
             {
@@ -58,7 +56,7 @@ namespace Loscate.App.ViewModels
             });
         }
         
-        void ShowNotification(string title, string message)
+        public void ShowNotification(string title, string message)
         {
             Device.BeginInvokeOnMainThread(() =>
             {
@@ -69,12 +67,12 @@ namespace Loscate.App.ViewModels
             });
         }
 
-        async Task CheckNewMessage()
+        public async Task CheckNewMessage()
         {
             var dialogs = await DialogRequests.GetUserDialogs(firebaseAuthenticator);
             foreach (var dialog in dialogs)
             {
-                var d = Dialogs.SingleOrDefault(d=>d.XamarinCompanion.Name == dialog.Companion.Name);
+                var d = Dialogs.SingleOrDefault(c=>c.XamarinCompanion.Name == dialog.Companion.Name);
                 if (d == null)
                 {
                     if (dialog.LastMessage.Text.Contains("Привет! Меня заинтерисовала твоя метка"))
@@ -82,63 +80,36 @@ namespace Loscate.App.ViewModels
                         notificationManager.SendNotification("Новый отклик", $"На вашу метку ответил пользователь {dialog.Companion.Name}.");
                     }
 
-                    await ExecuteLoadItemsCommand();
+                    ExecuteLoadItemsCommand();
                     return;
                 }
-                else
+
+                if (d.LastMessage.Text != dialog.LastMessage.Text)
                 {
-                    if (d.LastMessage.Text != dialog.LastMessage.Text)
+                    if (dialog.LastMessage.Text.Contains("Привет! Меня заинтерисовала твоя метка"))
                     {
-                        if (dialog.LastMessage.Text.Contains("Привет! Меня заинтерисовала твоя метка"))
-                        {
-                            notificationManager.SendNotification("Новый отклик", $"На вашу метку ответил пользователь {dialog.Companion.Name}.");
-                        }
-                        
-                        await ExecuteLoadItemsCommand();
-                        return;
+                        notificationManager.SendNotification("Новый отклик", $"На вашу метку ответил пользователь {dialog.Companion.Name}.");
                     }
+                        
+                    ExecuteLoadItemsCommand();
+                    return;
                 }
             }
         }
         
-        async Task ExecuteLoadItemsCommand()
+        void ExecuteLoadItemsCommand()
         {
             IsBusy = true;
 
             try
             {
-                var dialogs = await DialogRequests.GetUserDialogs(firebaseAuthenticator);
-                
-                // foreach (var dialog in dialogs)
-                // {
-                //     var d = Dialogs.SingleOrDefault(d=>d.XamarinCompanion.Name == dialog.Companion.Name);
-                //     if (d == null)
-                //     {
-                //         if (dialog.LastMessage.Text.Contains("Привет! Меня заинтерисовала твоя метка"))
-                //         {
-                //             notificationManager.SendNotification("Новый отклик", $"На вашу метку ответил пользователь {dialog.Companion.Name}.");
-                //         }
-                //         Dialogs.Add(new XamarinDialog(dialog));
-                //     }
-                //     else
-                //     {
-                //
-                //         d.LastMessage = dialog.LastMessage;
-                //     }
-                // }
-                
+                var dialogs =  DialogRequests.GetUserDialogs(firebaseAuthenticator).Result;
+
                 Dialogs.Clear();
                 foreach (var dialog in dialogs)
                 {
                     Dialogs.Add(new XamarinDialog(dialog));
                 }
-
-
-                    // var items = await DataStore.GetItemsAsync(true);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
             }
             finally
             {

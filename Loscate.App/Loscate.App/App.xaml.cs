@@ -17,7 +17,7 @@ namespace Loscate.App
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
             firebaseAuth = DependencyService.Get<IFirebaseAuthenticator>();
             firebaseAuth.SubscribeToTokenUpdate(TokenUpdate);
             if (firebaseAuth.IsHaveUser()) Login();
@@ -27,7 +27,7 @@ namespace Loscate.App
         {
             try
             {
-                var user = await UserRequests.GetUser(firebaseAuth);
+                var user = UserRequests.GetUser(firebaseAuth).Result;
                 firebaseAuth.UnSubscribeToTokenUpdate(TokenUpdate);
                 Device.BeginInvokeOnMainThread(() => Application.Current.MainPage = new AppShell(user));
             }
