@@ -19,13 +19,17 @@ namespace Loscate.App.UnitTests
         public bool IsSubscribe { get; set; }
         
         public bool IsSignIn { get; set; }
+
+        public bool HaveUser { get; set; } = true;
+
+        public string TestUserData = "{\"email\":\"test@test.ru\",\"password\":\"qwerty\",\"returnSecureToken\":true}";
         
         public string GetAuthToken()
         {
             if (string.IsNullOrWhiteSpace(token))
             {
                 HttpClient client = new HttpClient();
-                var content = new StringContent("{\"email\":\"test@test.ru\",\"password\":\"qwerty\",\"returnSecureToken\":true}", Encoding.UTF8, "application/json");
+                var content = new StringContent(TestUserData, Encoding.UTF8, "application/json");
                 var response  = client.PostAsync(
                     "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCpm_bIDe1uRtMikNuvHnvy8uCi8boczck", content).Result;
                 var jsonString = JObject.Parse(response.Content.ReadAsStringAsync().Result); 
@@ -37,7 +41,7 @@ namespace Loscate.App.UnitTests
 
         public bool IsHaveUser()
         {
-            return true;
+            return HaveUser;
         }
 
         public void SignIn()

@@ -59,9 +59,15 @@
     <Compile Include="ApiRequests\Social\SendMessageTests.cs" />
     <Compile Include="ApiRequests\User\ChangeUserNameTest.cs" />
     <Compile Include="ApiRequests\User\ChangeUserPhotoTest.cs" />
+    <Compile Include="AppTests\LoginTests.cs" />
     <Compile Include="MockModels\FakeAuthenticator.cs" />
     <Compile Include="MockModels\FakeMap.cs" />
     <Compile Include="MockModels\FakeNotificationManager.cs" />
+    <Compile Include="Models\ItemTests.cs" />
+    <Compile Include="Models\MessageTests.cs" />
+    <Compile Include="Models\NotificationEventArgsTests.cs" />
+    <Compile Include="Models\XamarinDialogTest.cs" />
+    <Compile Include="Models\XamarinUserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\ChatTemplateSelectorTests.cs" />
     <Compile Include="ViewModel\Chat\ChatTests.cs" />

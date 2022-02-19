@@ -26,11 +26,13 @@ namespace Loscate.App.UnitTests.ViewModel.Pin
         [TestMethod]
         public async Task AddPin()
         {
-            var viewModel = new AddPinViewModel();
-            viewModel.base64photo = Guid.NewGuid().ToString();
-            viewModel.ShortText = Guid.NewGuid().ToString();
-            viewModel.FullText = Guid.NewGuid().ToString();
-            viewModel.position = new Position(-1, -1);
+            var viewModel = new AddPinViewModel
+            {
+                base64photo = Guid.NewGuid().ToString(),
+                ShortText = Guid.NewGuid().ToString(),
+                FullText = Guid.NewGuid().ToString(),
+                position = new Position(-1, -1)
+            };
             viewModel.AddPinCommand.Execute(null);
 
             var authenticator = new FakeAuthenticator();
@@ -38,7 +40,89 @@ namespace Loscate.App.UnitTests.ViewModel.Pin
             var myPin = pins.Where(p => p.UserUID == testPinUserUID).ToList();
             myPin.ForEach(p => MapRequests.DelPin(authenticator, p.Id));
         }
+
+
+        [TestMethod]
+        public void NoPhotoLimit()
+        {
+            var viewModel = new AddPinViewModel
+            {
+                base64photo = string.Empty,
+                ShortText = Guid.NewGuid().ToString(),
+                FullText = Guid.NewGuid().ToString(),
+                position = new Position(-1, -1)
+            };
+
+            Assert.AreEqual(viewModel.ValidateData(), "Выберите фото!");
+        }
         
-        //TODO limits
+        [TestMethod]
+        public void EmptyShortText()
+        {
+            var viewModel = new AddPinViewModel
+            {
+                base64photo = Guid.NewGuid().ToString(),
+                ShortText = string.Empty,
+                FullText = Guid.NewGuid().ToString(),
+                position = new Position(-1, -1)
+            };
+
+            Assert.AreEqual(viewModel.ValidateData(), "Краткое описание не может быть пустым!");
+        }
+        
+        [TestMethod]
+        public void ShortLenghtLimitText()
+        {
+            var viewModel = new AddPinViewModel
+            {
+                base64photo = Guid.NewGuid().ToString(),
+                ShortText = "123",
+                FullText = Guid.NewGuid().ToString(),
+                position = new Position(-1, -1)
+            };
+
+            Assert.AreEqual(viewModel.ValidateData(), "Краткое описание не может быть меньше 10 символов!");
+        }
+        
+        [TestMethod]
+        public void EmptyFullTextText()
+        {
+            var viewModel = new AddPinViewModel
+            {
+                base64photo = Guid.NewGuid().ToString(),
+                ShortText =  Guid.NewGuid().ToString(),
+                FullText = string.Empty,
+                position = new Position(-1, -1)
+            };
+
+            Assert.AreEqual(viewModel.ValidateData(), "Подробное описание не может быть пустым!");
+        }
+        
+        [TestMethod]
+        public void FullTextLenghtLimitText()
+        {
+            var viewModel = new AddPinViewModel
+            {
+                base64photo = Guid.NewGuid().ToString(),
+                ShortText =  Guid.NewGuid().ToString(),
+                FullText = "123",
+                position = new Position(-1, -1)
+            };
+
+            Assert.AreEqual(viewModel.ValidateData(), "Подробное описание не может быть меньше 20 символов!");
+        }
+        
+        [TestMethod]
+        public void LocationNotSetText()
+        {
+            var viewModel = new AddPinViewModel
+            {
+                base64photo = Guid.NewGuid().ToString(),
+                ShortText =  Guid.NewGuid().ToString(),
+                FullText = Guid.NewGuid().ToString()
+            };
+
+            Assert.AreEqual(viewModel.ValidateData(), "Выберите геометку!");
+        }
     }
 }

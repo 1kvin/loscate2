@@ -1,7 +1,9 @@
-﻿using Android.Content;
+﻿using System.Diagnostics.CodeAnalysis;
+using Android.Content;
 
 namespace Loscate.App.Droid.Service.Notification
 {
+    [ExcludeFromCodeCoverage]
     [BroadcastReceiver(Enabled = true, Label = "Local Notifications Broadcast Receiver")]
     public class AlarmHandler : BroadcastReceiver
     {

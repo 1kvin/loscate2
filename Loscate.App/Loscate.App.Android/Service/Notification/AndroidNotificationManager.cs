@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
@@ -12,6 +13,7 @@ using AndroidApp = Android.App.Application;
 [assembly: Dependency(typeof(Loscate.App.Droid.Service.Notification.AndroidNotificationManager))]
 namespace Loscate.App.Droid.Service.Notification
 {
+    [ExcludeFromCodeCoverage]
     public class AndroidNotificationManager : INotificationManager
     {
         const string channelId = "default";

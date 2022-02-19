@@ -17,13 +17,12 @@ namespace Loscate.App
         {
             InitializeComponent();
 
-            //DependencyService.Register<MockDataStore>();
             firebaseAuth = DependencyService.Get<IFirebaseAuthenticator>();
             firebaseAuth.SubscribeToTokenUpdate(TokenUpdate);
             if (firebaseAuth.IsHaveUser()) Login();
         }
 
-        private async void Login()
+        private void Login()
         {
             try
             {
