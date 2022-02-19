@@ -29,6 +29,27 @@ namespace Loscate.App.UnitTests.ViewModel.Profile
             
             viewModel.SaveChangesCommand.Execute(null);
         }
-        //TODO limits
+        
+        [TestMethod]
+        public void UserNameMinLimitTest()
+        {
+            var viewModel = new EditProfileViewModel
+            {
+                UserName = "123"
+            };
+
+            Assert.AreEqual(viewModel.ValidateUserName(), "Имя пользователя, не может быть меньше 10 символов.");
+        }
+        
+        [TestMethod]
+        public void UserNameMaxLimitTest()
+        {
+            var viewModel = new EditProfileViewModel
+            {
+                UserName = "123456789012345678901234567890123456789012345678901234567890"
+            };
+
+            Assert.AreEqual(viewModel.ValidateUserName(), "Имя пользователя, не может быть больше 30 символов.");
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
 using Android.Content;
 using Android.Content.Res;
 using Android.Graphics.Drawables;
@@ -10,6 +11,7 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(ExtendedEditorControl), typeof(CustomEditorRenderer))]
 namespace Loscate.App.Droid.Renderers
 {
+    [ExcludeFromCodeCoverage]
      public class CustomEditorRenderer : EditorRenderer
     {
         bool initial = true;

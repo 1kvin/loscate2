@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Net;
 using Android.Content;
@@ -19,6 +20,7 @@ using Pin = Xamarin.Forms.Maps.Pin;
 [assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
 namespace Loscate.App.Droid
 {
+    [ExcludeFromCodeCoverage]
     public class CustomMapRenderer : MapRenderer, GoogleMap.IInfoWindowAdapter
     {
         public List<CustomPin> customPins;

@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Loscate.App.Controls
 {
+    [ExcludeFromCodeCoverage]
     public class ExtendedListView : ListView
     {
         public ExtendedListView() : this(ListViewCachingStrategy.RecycleElement)

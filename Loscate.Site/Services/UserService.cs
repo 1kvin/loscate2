@@ -1,15 +1,16 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 using Loscate.Site.DbContext;
+using Loscate.Site.Repository;
 using Loscate.Site.Utilities;
 
 namespace Loscate.Site.Services
 {
     public class UserService
     {
-        private readonly LoscateDbContext loscateDbContext;
+        private readonly ILoscateDbRepository loscateDbContext;
         
-        public UserService(LoscateDbContext loscateDbContext)
+        public UserService(ILoscateDbRepository loscateDbContext)
         {
             this.loscateDbContext = loscateDbContext;
         }

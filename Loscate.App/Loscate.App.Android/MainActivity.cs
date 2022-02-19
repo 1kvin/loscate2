@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -19,6 +20,7 @@ using Xamarin.Forms;
 
 namespace Loscate.App.Droid
 {
+    [ExcludeFromCodeCoverage]
     [Activity(Label = "Loscate.App", Icon = "@mipmap/icon", Theme = "@style/MainTheme", LaunchMode = LaunchMode.SingleTop, MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {

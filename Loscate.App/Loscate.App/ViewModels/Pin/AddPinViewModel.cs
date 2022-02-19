@@ -79,7 +79,7 @@ namespace Loscate.App.ViewModels
             }
         }
 
-        private string ValidateData()
+        public string ValidateData()
         {
             if (string.IsNullOrEmpty(base64photo))
             {
