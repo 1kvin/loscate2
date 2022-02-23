@@ -45,8 +45,8 @@ namespace Loscate.Site
             });
             
             services.AddDbContext<LoscateDbContext>();
-            services.AddTransient<UserService>();
             services.AddTransient<ILoscateDbRepository, EfLoscateRepository>();
+            services.AddTransient<IUserService, UserService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

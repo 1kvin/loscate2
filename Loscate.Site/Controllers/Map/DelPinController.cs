@@ -13,9 +13,9 @@ namespace Loscate.Site.Controllers.Map
     public class DelPinController: Controller
     {
         private readonly ILoscateDbRepository loscateDbContext;
-        private readonly UserService userService;
+        private readonly IUserService userService;
 
-        public DelPinController(ILoscateDbRepository loscateDbContext, UserService userService)
+        public DelPinController(ILoscateDbRepository loscateDbContext, IUserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;

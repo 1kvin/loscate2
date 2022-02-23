@@ -10,8 +10,8 @@ namespace Loscate.Site.Controllers.User
     [Route("api/user/[controller]")]
     public class GetFirebaseUserController : Controller
     {
-        private readonly UserService userService;
-        public GetFirebaseUserController(UserService userService)
+        private readonly IUserService userService;
+        public GetFirebaseUserController(IUserService userService)
         {
             this.userService = userService;
         }

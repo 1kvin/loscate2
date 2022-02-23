@@ -16,9 +16,9 @@ namespace Loscate.Site.Controllers.Social.Dialog
     public class GetUserDialogsController : Controller
     {
         private readonly ILoscateDbRepository loscateDbContext;
-        private readonly UserService userService;
+        private readonly IUserService userService;
 
-        public GetUserDialogsController(ILoscateDbRepository loscateDbContext, UserService userService)
+        public GetUserDialogsController(ILoscateDbRepository loscateDbContext, IUserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;

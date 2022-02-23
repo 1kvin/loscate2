@@ -17,10 +17,10 @@ namespace Loscate.Site.Controllers.Map
     public class AddPinController : Controller
     {
         private readonly ILoscateDbRepository loscateDbContext;
-        private readonly UserService userService;
+        private readonly IUserService userService;
         private const int MAX_PIN_PER_DAY = 3;
 
-        public AddPinController(ILoscateDbRepository loscateDbContext, UserService userService)
+        public AddPinController(ILoscateDbRepository loscateDbContext, IUserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;

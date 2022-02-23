@@ -6,14 +6,15 @@ using Loscate.Site.Utilities;
 
 namespace Loscate.Site.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly ILoscateDbRepository loscateDbContext;
-        
+
         public UserService(ILoscateDbRepository loscateDbContext)
         {
             this.loscateDbContext = loscateDbContext;
         }
+
         public FirebaseUser GetDbUser(ClaimsPrincipal user)
         {
             var firebaseUser = user.ToFirebaseUser();
