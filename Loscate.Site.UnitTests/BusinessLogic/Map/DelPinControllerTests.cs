@@ -126,7 +126,7 @@ namespace Loscate.Site.Controllers.Map.Tests
         }
 
         [TestMethod]
-        public void DelByExistsFromOtherUserTest()
+        public void DelByExistsPinIdFromOtherUserTest()
 
         {
             const int testUserId2 = 1;
