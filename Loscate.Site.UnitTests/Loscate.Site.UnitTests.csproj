@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Loscate.Site\Loscate.Site.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DbContext\" />
+  </ItemGroup>
+
 </Project>
