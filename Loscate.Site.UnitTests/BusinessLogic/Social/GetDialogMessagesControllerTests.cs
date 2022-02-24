@@ -20,6 +20,7 @@ namespace Loscate.Site.Controllers.Social.Message.Tests
     public class GetDialogMessagesControllerTests
     {
         const int dialogId = 0;
+        const int chatMessageId = 0;
         const int testUserId1 = 1;
         const string testUserUid1 = "uid";
         const int testUserId2 = 2;
@@ -147,15 +148,27 @@ namespace Loscate.Site.Controllers.Social.Message.Tests
                 testUser1,
                 testUser2
             }.AsQueryable();
+            var dialog = new DbContext.Dialog()
+            {
+                Id = dialogId,
+                UserId1 = testUserId1,
+                UserId2 = testUserId2,
+                UserId1Navigation = testUser1,
+                UserId2Navigation = testUser2
+            };
 
             var message = new ChatMessage()
             {
+                Id = chatMessageId,
                 Text = testMessageText,
                 Time = DateTime.UtcNow,
                 DialogId = dialogId,
                 SendUser = testUser1,
-                SendUserId = testUser1.Id
+                SendUserId = testUser1.Id,
+                Dialog = dialog
             };
+
+
             var chatMessages = new List<ChatMessage>()
             {
                 message
@@ -163,14 +176,7 @@ namespace Loscate.Site.Controllers.Social.Message.Tests
 
             var dialogs = new List<DbContext.Dialog>()
             {
-                new DbContext.Dialog()
-                {
-                    Id = dialogId,
-                    UserId1 = testUserId1,
-                    UserId2 = testUserId2,
-                    UserId1Navigation = testUser1,
-                    UserId2Navigation = testUser2
-                }
+                dialog
 
             }.AsQueryable();
 
