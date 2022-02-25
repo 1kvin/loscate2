@@ -13,9 +13,9 @@ namespace Loscate.Site.Controllers.Social.Message
     public class SendMessageController : Controller
     {
         private readonly ILoscateDbRepository loscateDbContext;
-        private readonly UserService userService;
+        private readonly IUserService userService;
         
-        public SendMessageController(ILoscateDbRepository loscateDbContext, UserService userService)
+        public SendMessageController(ILoscateDbRepository loscateDbContext, IUserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;

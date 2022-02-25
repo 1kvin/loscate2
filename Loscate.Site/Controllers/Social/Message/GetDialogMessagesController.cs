@@ -16,9 +16,9 @@ namespace Loscate.Site.Controllers.Social.Message
     public class GetDialogMessagesController : Controller
     {
         private readonly ILoscateDbRepository loscateDbContext;
-        private readonly UserService userService;
+        private readonly IUserService userService;
 
-        public GetDialogMessagesController(ILoscateDbRepository loscateDbContext, UserService userService)
+        public GetDialogMessagesController(ILoscateDbRepository loscateDbContext, IUserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;

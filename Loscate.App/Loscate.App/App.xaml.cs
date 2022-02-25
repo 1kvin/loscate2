@@ -17,17 +17,16 @@ namespace Loscate.App
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             firebaseAuth = DependencyService.Get<IFirebaseAuthenticator>();
             firebaseAuth.SubscribeToTokenUpdate(TokenUpdate);
             if (firebaseAuth.IsHaveUser()) Login();
         }
 
-        private async void Login()
+        private void Login()
         {
             try
             {
-                var user = await UserRequests.GetUser(firebaseAuth);
+                var user = UserRequests.GetUser(firebaseAuth).Result;
                 firebaseAuth.UnSubscribeToTokenUpdate(TokenUpdate);
                 Device.BeginInvokeOnMainThread(() => Application.Current.MainPage = new AppShell(user));
             }

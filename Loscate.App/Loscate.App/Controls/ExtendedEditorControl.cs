@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Xamarin.Forms;
 
 namespace Loscate.App.Controls
 {
+    [ExcludeFromCodeCoverage]
     public class ExtendedEditorControl : Editor
     {
         public static BindableProperty PlaceholderProperty

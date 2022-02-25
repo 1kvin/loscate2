@@ -12,9 +12,9 @@ namespace Loscate.Site.Controllers.User
     public class EditUserNameController : Controller
     {
         private readonly ILoscateDbRepository loscateDbContext;
-        private readonly UserService userService;
+        private readonly IUserService userService;
 
-        public EditUserNameController(ILoscateDbRepository loscateDbContext, UserService userService)
+        public EditUserNameController(ILoscateDbRepository loscateDbContext, IUserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;

@@ -18,7 +18,7 @@ namespace Loscate.App.ViewModels
         public string UserName { get; set; }
         public Command UserImageClickCommand { get; }
         public Command SaveChangesCommand { get; }
-        private string base64photo;
+        public string base64photo;
         private readonly IFirebaseAuthenticator firebaseAuthenticator;
         private readonly UserRepository userRepository;
 
@@ -74,15 +74,11 @@ namespace Loscate.App.ViewModels
                 }
             }
 
-            if (UserName.Length < 10)
+            var validateUserNameResult = ValidateUserName();
+
+            if (!string.IsNullOrWhiteSpace(validateUserNameResult))
             {
-                await Application.Current.MainPage.DisplayAlert("Ошибка", "Имя пользователя, не может быть меньше 10 символов.", "ОК");
-                return;
-            }
-            
-            if (UserName.Length > 30)
-            {
-                await Application.Current.MainPage.DisplayAlert("Ошибка", "Имя пользователя, не может быть больше 30 символов.", "ОК");
+                await Application.Current.MainPage.DisplayAlert("Ошибка", validateUserNameResult, "ОК");
                 return;
             }
 
@@ -99,6 +95,21 @@ namespace Loscate.App.ViewModels
            
             
             await Shell.Current.GoToAsync("..");
+        }
+
+        public string ValidateUserName()
+        {
+            if (UserName.Length < 10)
+            {
+                return "Имя пользователя, не может быть меньше 10 символов.";
+            }
+            
+            if (UserName.Length > 30)
+            {
+                return "Имя пользователя, не может быть больше 30 символов.";
+            }
+
+            return null;
         }
         
         private string ConvertToBase64(Stream stream)

@@ -1,13 +1,13 @@
 ﻿using Firebase.Auth;
 using Loscate.App.Services;
 using System;
+using System.Diagnostics.CodeAnalysis;
 using Xamarin.Forms;
-
 
 [assembly: Dependency(typeof(Loscate.App.Droid.Service.FirebaseAuthentication))]
 namespace Loscate.App.Droid.Service
 {
-
+    [ExcludeFromCodeCoverage]
     public class FirebaseAuthentication : IFirebaseAuthenticator
     {
         public string token;

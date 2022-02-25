@@ -1,18 +1,20 @@
 ﻿using System.Linq;
 using System.Security.Claims;
 using Loscate.Site.DbContext;
+using Loscate.Site.Repository;
 using Loscate.Site.Utilities;
 
 namespace Loscate.Site.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
-        private readonly LoscateDbContext loscateDbContext;
-        
-        public UserService(LoscateDbContext loscateDbContext)
+        private readonly ILoscateDbRepository loscateDbContext;
+
+        public UserService(ILoscateDbRepository loscateDbContext)
         {
             this.loscateDbContext = loscateDbContext;
         }
+
         public FirebaseUser GetDbUser(ClaimsPrincipal user)
         {
             var firebaseUser = user.ToFirebaseUser();

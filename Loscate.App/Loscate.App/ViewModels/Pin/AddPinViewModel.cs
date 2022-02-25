@@ -29,8 +29,8 @@ namespace Loscate.App.ViewModels
 
         private readonly Geocoder geocoder = new Geocoder();
         private readonly IFirebaseAuthenticator firebaseAuthenticator;
-        private Position position;
-        private string base64photo;
+        public Position position;
+        public string base64photo;
 
         public AddPinViewModel()
         {
@@ -79,7 +79,7 @@ namespace Loscate.App.ViewModels
             }
         }
 
-        private string ValidateData()
+        public string ValidateData()
         {
             if (string.IsNullOrEmpty(base64photo))
             {

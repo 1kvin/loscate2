@@ -13,9 +13,9 @@ namespace Loscate.Site.Controllers.User
     public class EditPhotoController : Controller
     {
         private readonly ILoscateDbRepository loscateDbContext;
-        private readonly UserService userService;
+        private readonly IUserService userService;
 
-        public EditPhotoController(ILoscateDbRepository loscateDbContext, UserService userService)
+        public EditPhotoController(ILoscateDbRepository loscateDbContext, IUserService userService)
         {
             this.loscateDbContext = loscateDbContext;
             this.userService = userService;
